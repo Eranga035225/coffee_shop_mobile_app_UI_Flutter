@@ -31,6 +31,7 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                    SizedBox(height: 30),
                     Text("Location", style: TextStyle(color: Colors.grey, fontSize: 16),),
                     Row(children: [
                       Text('Colombo, Sri Lanka', style: TextStyle(color: Colors.grey.shade200, fontSize: 18),),
@@ -38,8 +39,10 @@ class HomeScreen extends StatelessWidget {
                     
 
                     ],),
-                    SizedBox(height: 12),
-                    Row(children: [
+                    SizedBox(height: 33),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 10),
                         height: 60,
@@ -66,6 +69,9 @@ class HomeScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)
                       
                         ),
+                        child:
+                        Icon(Icons.tune_rounded,
+                        color: Colors.white, size: 30)
                       
                       
                       )
@@ -82,6 +88,7 @@ class HomeScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
+                    padding: EdgeInsets.symmetric(horizontal:18, vertical:10),
                     height: 160,
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -94,13 +101,42 @@ class HomeScreen extends StatelessWidget {
                         fit: BoxFit.cover
                   
                     )
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical:4),
+                       
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFED5151),
+                          borderRadius: BorderRadius.circular(10)
+
+
+                        ),
+                         child: Text('Promo', style: TextStyle(color: Colors.white, fontSize: 20),),
+                      ),
+
+                      SizedBox(height: 10,),
+
+                      Text("Buy one get\none FREE", style:TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),),
+
+                      
+
+
+
+                    ],)
+
+
+
                     )
                   
                   
                   
                     ),
                 ),
-              )
+              
               
             ],
 
