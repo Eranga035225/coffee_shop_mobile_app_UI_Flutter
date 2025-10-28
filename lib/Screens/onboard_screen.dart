@@ -1,5 +1,4 @@
 import 'package:coffee_shop_app/components/custom_button.dart';
-import 'package:coffee_shop_app/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';

@@ -11,6 +11,30 @@ class HomeScreen extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label:'Home'),
+      //     BottomNavigationBarItem(icon: Icon(Icons.favorite_outline_outlined), label: 'Favorites'),
+
+
+
+      //   ]
+      // ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 12, right: 12, top: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+            CustomBottomNavigationBarItem(icon: Icons.home_rounded, isSelected: true,),
+            CustomBottomNavigationBarItem(icon: Icons.favorite_outline_rounded),
+            CustomBottomNavigationBarItem(icon: Icons.shopping_bag_outlined),
+            CustomBottomNavigationBarItem(icon: Icons.notifications_none_rounded),
+          
+          
+          ],),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(
@@ -224,9 +248,30 @@ class HomeScreen extends StatelessWidget {
                                     fit: BoxFit.cover
                                     
                                   ),
-                                  borderRadius: BorderRadius.circular(20)
+                                  borderRadius: BorderRadius.circular(20),
 
                                 ),
+                                child: Stack(
+                                  children: [
+                                    Align(alignment: Alignment.topRight,
+                                    child: Container(
+                                      padding: EdgeInsets.all(8.0),
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withAlpha(50),
+                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), topRight: Radius.circular(20))
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                        Icon(Icons.star_rounded, color: Colors.amber),
+                                        Text(product.rating.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                                      
+                                      
+                                      
+                                      ],),
+                                    ))
+                                  ],
+                                )
                                 
                               ),
                               SizedBox(height:5),
@@ -279,6 +324,38 @@ class HomeScreen extends StatelessWidget {
 
 
 
+    );
+  }
+}
+
+class CustomBottomNavigationBarItem extends StatelessWidget {
+  final IconData icon;
+  final bool isSelected;
+
+
+  const CustomBottomNavigationBarItem({
+    super.key,required this.icon, this.isSelected= false
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, color: isSelected ? CustomColors.primaryColor : Colors.grey.shade400, size:30),
+        SizedBox(height:6),
+        isSelected ? 
+        Container(
+          width:18,
+          height:6,
+          decoration: BoxDecoration(
+            color: isSelected ? CustomColors.primaryColor : Colors.grey.shade500,
+            borderRadius: BorderRadius.circular(25)
+    
+          ),
+        )
+        : SizedBox(height:6),
+      ],
     );
   }
 }
