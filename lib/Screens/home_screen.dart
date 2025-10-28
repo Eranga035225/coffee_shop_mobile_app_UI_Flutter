@@ -2,6 +2,7 @@ import 'package:coffee_shop_app/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../data/demo_data.dart';
+import 'item_view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -229,75 +230,81 @@ class HomeScreen extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder:(context, index) {
                     final product = DemoData.products[index];
-                    return Container(
-                      padding: EdgeInsets.all(6.0),
-                      // color: Colors.white,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height:130,
-                                decoration: BoxDecoration(
-                                  // color: Colors.grey,
-                                  image: DecorationImage(
-                                    image: AssetImage(product.image),
-                                    fit: BoxFit.cover
-                                    
-                                  ),
-                                  borderRadius: BorderRadius.circular(20),
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ItemViewScreen()));
 
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Align(alignment: Alignment.topRight,
-                                    child: Container(
-                                      padding: EdgeInsets.all(8.0),
-                                      decoration: BoxDecoration(
-                                        color: Colors.black.withAlpha(50),
-                                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), topRight: Radius.circular(20))
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                        Icon(Icons.star_rounded, color: Colors.amber),
-                                        Text(product.rating.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                                      
-                                      
-                                      
-                                      ],),
-                                    ))
-                                  ],
-                                )
-                                
-                              ),
-                              SizedBox(height:5),
-                              Text(product.name, style:TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                              Text(product.category, style:TextStyle(color:Colors.grey.shade700)),
-                              SizedBox(height:5),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children : [
-                                Text('\$ ${product.price}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(6.0),
+                        // color: Colors.white,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
                                 Container(
-                                  width:35,
-                                  height:35,
+                                  height:130,
                                   decoration: BoxDecoration(
-                                    color: CustomColors.primaryColor,
-                                    borderRadius: BorderRadius.circular(10)
-
+                                    // color: Colors.grey,
+                                    image: DecorationImage(
+                                      image: AssetImage(product.image),
+                                      fit: BoxFit.cover
+                                      
+                                    ),
+                                    borderRadius: BorderRadius.circular(20),
+                      
                                   ),
-                                  child: Icon(Icons.add, color: Colors.white,),
-                                )
-                              ],)
-                            ],
-
-
-
-                        )
+                                  child: Stack(
+                                    children: [
+                                      Align(alignment: Alignment.topRight,
+                                      child: Container(
+                                        padding: EdgeInsets.all(8.0),
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withAlpha(50),
+                                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), topRight: Radius.circular(20))
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                          Icon(Icons.star_rounded, color: Colors.amber),
+                                          Text(product.rating.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                                        
+                                        
+                                        
+                                        ],),
+                                      ))
+                                    ],
+                                  )
+                                  
+                                ),
+                                SizedBox(height:5),
+                                Text(product.name, style:TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                Text(product.category, style:TextStyle(color:Colors.grey.shade700)),
+                                SizedBox(height:5),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children : [
+                                  Text('\$ ${product.price}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                                  Container(
+                                    width:35,
+                                    height:35,
+                                    decoration: BoxDecoration(
+                                      color: CustomColors.primaryColor,
+                                      borderRadius: BorderRadius.circular(10)
+                      
+                                    ),
+                                    child: Icon(Icons.add, color: Colors.white,),
+                                  )
+                                ],)
+                              ],
+                      
+                      
+                      
+                          )
+                      ),
                     );
                   },
                         
