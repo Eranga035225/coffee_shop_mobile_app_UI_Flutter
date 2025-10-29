@@ -2,6 +2,8 @@ import 'package:coffee_shop_app/components/custom_button.dart';
 import 'package:coffee_shop_app/utils/custom_colors.dart';
 import 'package:flutter/material.dart';
 
+import 'order_screen.dart';
+
 class ItemViewScreen extends StatefulWidget {
   const ItemViewScreen({super.key});
 
@@ -16,8 +18,10 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       bottomNavigationBar: Container(
+        padding: EdgeInsets.only(top: 16),
         decoration: BoxDecoration(
           color: Colors.white,
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
         ),
         child: SafeArea(
           child: Padding(
@@ -35,7 +39,13 @@ class _ItemViewScreenState extends State<ItemViewScreen> {
         
               SizedBox(
                 width: size.width * 0.7,
-                child: CustomButton(text: 'Buy Now', onTap: (){}))
+                child: CustomButton(text: 'Buy Now', onTap: (){
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => OrderScreen(),
+                  ));
+
+
+                }))
         
             
             ],),
